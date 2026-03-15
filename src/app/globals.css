@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium Palette */
+  --color-brand-primary: #0070f3;
+  --color-brand-secondary: #00dfd8;
+  --color-brand-accent: #7928ca;
+  
+  /* Spatial Layering / Shadows */
+  --shadow-premium: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-raytraced: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Glassmorphism Tokens */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --blur-glass: 12px;
+}
+
+:root {
+  --background: #fbfbfb;
+  --foreground: #111111;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --bento-bg: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #050505;
+    --foreground: #f5f5f5;
+    --glass-bg: rgba(17, 17, 17, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --bento-bg: #111111;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Premium Glassmorphism Utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Bento Grid Card */
+.bento-card {
+  background: var(--bento-bg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-raytraced);
+}
+
+/* Iridescent Accents */
+.iridescent {
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary), var(--color-brand-accent));
+  background-size: 200% 200%;
+  animation: shimmer 5s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

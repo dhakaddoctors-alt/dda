@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build",
     "pages:build": "npx @cloudflare/next-on-pages --skip-build",
     "pages:preview": "npx wrangler pages dev .open-next",
     "pages:deploy": "npx wrangler pages deploy .open-next",

@@ -14,6 +14,17 @@ export default function DirectoryPage() {
     { name: "Suresh Gupta", role: "Guest", loc: "Pune", spec: "Business", avatar: null },
   ];
 
+  // Filter logic
+  const filteredMembers = members.filter(member => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      member.name.toLowerCase().includes(searchLower) ||
+      member.loc.toLowerCase().includes(searchLower) ||
+      member.spec.toLowerCase().includes(searchLower) ||
+      member.role.toLowerCase().includes(searchLower)
+    );
+  });
+
   return (
     <div className="max-w-7xl mx-auto px-6 space-y-8 pb-12">
       {/* Search Header */}
@@ -43,11 +54,21 @@ export default function DirectoryPage() {
       </div>
 
       {/* Member Feed */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {members.map((member, i) => (
-          <MemberCard key={i} member={member} />
-        ))}
-      </div>
+      {filteredMembers.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredMembers.map((member, i) => (
+            <MemberCard key={i} member={member} />
+          ))}
+        </div>
+      ) : (
+        <div className="py-20 text-center space-y-4 glass rounded-[2.5rem]">
+          <div className="w-20 h-20 bg-neutral-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mx-auto text-neutral-400">
+            <Search className="w-10 h-10" />
+          </div>
+          <h3 className="text-xl font-bold">No members found</h3>
+          <p className="text-neutral-500">We couldn't find anyone matching "{searchTerm}"</p>
+        </div>
+      )}
     </div>
   );
 }

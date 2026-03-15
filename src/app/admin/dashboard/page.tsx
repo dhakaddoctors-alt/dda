@@ -87,13 +87,24 @@ export default function AdminDashboard() {
             </div>
          </div>
 
-         {/* Quick Actions */}
-         <div className="glass rounded-[2.5rem] p-8 space-y-6 shadow-premium border-white/10 h-fit">
-            <h3 className="text-xl font-bold">Quick Actions</h3>
-            <div className="grid grid-cols-1 gap-4">
-               <ActionButton icon={<UserPlus className="w-5 h-5" />} label="Review Approvals" href="/admin/approvals" />
-               <ActionButton icon={<FileText className="w-5 h-5" />} label="Generate Reports" />
-               <ActionButton icon={<Bell className="w-5 h-5" />} label="Broadcast Notice" />
+         {/* Engagement Analytics */}
+         <div className="glass rounded-[2.5rem] p-8 space-y-6 shadow-premium border-white/10">
+            <h3 className="text-xl font-bold">Engagement Trends</h3>
+            <div className="h-48 flex items-end gap-2 px-2">
+               {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
+                 <div 
+                   key={i} 
+                   style={{ height: `${h}%` }} 
+                   className="flex-grow bg-brand-primary/20 rounded-t-lg hover:bg-brand-primary transition-all cursor-pointer relative group"
+                 >
+                   <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                     {h} New Users
+                   </div>
+                 </div>
+               ))}
+            </div>
+            <div className="flex justify-between text-[10px] font-black text-neutral-400 uppercase tracking-widest px-1">
+               <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
             </div>
          </div>
       </div>

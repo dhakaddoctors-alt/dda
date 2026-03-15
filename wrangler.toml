@@ -1,6 +1,7 @@
 name = "dda-portal"
 main = ".open-next/worker.js"
 compatibility_date = "2024-11-01"
+pages_build_output_dir = ".open-next"
 
 # Development / Preview Configuration
 [vars]

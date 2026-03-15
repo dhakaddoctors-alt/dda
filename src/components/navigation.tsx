@@ -26,6 +26,7 @@ export function DeskNav() {
     { name: 'Home', href: '/dashboard', icon: Home },
     { name: 'Directory', href: '/directory', icon: Users, roles: ['Guest', 'Student', 'Doctor', 'Admin', 'Super Admin'] },
     { name: 'Feed', href: '/feed', icon: Search },
+    { name: 'Resources', href: '/resources', icon: FileText },
     { name: 'Committees', href: '/committees', icon: Bell },
   ];
 
@@ -66,12 +67,18 @@ export function DeskNav() {
 
       <div className="h-6 w-[1px] bg-neutral-200 dark:bg-neutral-800 mx-2" />
       
-      <Link 
-        href="/profile" 
-        className="h-10 w-10 rounded-full border-2 border-brand-primary/20 flex items-center justify-center hover:border-brand-primary transition-colors overflow-hidden"
-      >
-        <UserCircle className="w-6 h-6 text-neutral-400" />
-      </Link>
+      <div className="flex items-center gap-4">
+        <Link href="/settings/notifications" className="relative group p-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+          <Bell className="w-5 h-5 text-neutral-400 group-hover:text-brand-primary transition-colors" />
+          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-neutral-900" />
+        </Link>
+        <Link 
+          href="/profile" 
+          className="h-10 w-10 rounded-full border-2 border-brand-primary/20 flex items-center justify-center hover:border-brand-primary transition-colors overflow-hidden"
+        >
+          <UserCircle className="w-6 h-6 text-neutral-400" />
+        </Link>
+      </div>
     </nav>
   );
 }
@@ -84,6 +91,7 @@ export function MobileNav() {
   const navItems = [
     { name: 'Home', href: '/dashboard', icon: Home },
     { name: 'Search', href: '/directory', icon: Search },
+    { name: 'Resources', href: '/resources', icon: FileText },
     { name: 'Feed', href: '/feed', icon: Users },
     { name: 'Profile', href: '/profile', icon: UserCircle },
   ];

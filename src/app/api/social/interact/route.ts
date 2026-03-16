@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { postId, action, content } = await req.json();
+    const { postId, action, content } = await req.json() as { postId: string; action: string; content?: string };
     const db = getDb((req as any).env?.DB || (process as any).env?.DB);
     const userId = session.user.id;
 

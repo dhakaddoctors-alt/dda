@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { userId, action } = await req.json();
+    const { userId, action } = await req.json() as { userId: string; action: 'delete' | 'restore' | 'approve' };
     const db = getDb((req as any).env?.DB || (process as any).env?.DB);
 
     if (action === 'delete') {

@@ -15,7 +15,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { profileId, committeeId, designation, action } = await req.json();
+    const { profileId, committeeId, designation, action } = await req.json() as {
+      profileId: string;
+      committeeId: string;
+      designation?: string;
+      action: 'add' | 'remove';
+    };
     const db = getDb((req as any).env?.DB || (process as any).env?.DB);
 
     if (action === 'add') {

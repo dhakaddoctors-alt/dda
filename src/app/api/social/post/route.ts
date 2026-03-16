@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { content, imageUrl } = await req.json();
+    const { content, imageUrl } = await req.json() as { content: string; imageUrl?: string };
     if (!content) return NextResponse.json({ error: 'Post content required' }, { status: 400 });
 
     const db = getDb((req as any).env?.DB || (process as any).env?.DB);

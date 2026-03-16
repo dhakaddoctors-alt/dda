@@ -9,9 +9,9 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Ensure we don't use features that break Cloudflare environment
+  // Cloudflare Pages compatible config
 };
 
-export default process.env.NODE_ENV === 'development' 
-  ? nextConfig 
+export default process.env.NODE_ENV === 'development'
+  ? nextConfig
   : withPWA(nextConfig);

@@ -1,43 +1,17 @@
-name = "dda-portal"  # Project name dashboard se match karega
+name = "dda-portal"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".open-next"
 
-# OpenNext Worker entry point
-main = ".open-next/worker.js"
-
-# Latest compatibility for Node.js APIs + fixes (important!)
-compatibility_date = "2026-03-15"  # Ya aaj ki date jaise "2026-03-16" – dashboard ke close rakho
-compatibility_flags = ["nodejs_compat"]  # Must for Next.js/OpenNext
-
-# For Cloudflare Pages: Static files + Functions output dir
-pages_build_output_dir = ".open-next"  # Yeh Pages Git builds ke liye key hai
-
-# Static assets bucket (OpenNext output se)
-[site]
-bucket = ".open-next/assets"  # Ya [assets] section mein bhi likh sakte ho: assets = { directory = ".open-next/assets", binding = "ASSETS" }
-
-# Environment variables (dashboard se bhi add kar sakte ho, lekin yahan consistent rakhne ke liye)
 [vars]
-NEXT_PUBLIC_SITE_URL = "https://dda-portal.pages.dev"  # Production URL; preview ke liye alag section bana sakte ho
+NEXT_PUBLIC_SITE_URL = "https://dda-portal.pages.dev"
 
-# D1 Database (sahi ID aur name confirm kar lo dashboard > Workers & Pages > D1)
 [[d1_databases]]
 binding = "DB"
 database_name = "dda-db"
 database_id = "08671e5e-f1c2-4507-bc7d-7335c3b13da7"
-migrations_dir = "drizzle"  # Agar Drizzle ORM use kar rahe ho
+migrations_dir = "drizzle"
 
-# KV Namespace (for sessions, cache, stories, etc.)
 [[kv_namespaces]]
 binding = "KV_DATA"
 id = "377aaf2e1e2445ae92713c1a26758694"
-
-# Optional: Preview env (non-main branches ke liye alag config)
-[env.preview]
-name = "dda-portal-preview"
-pages_build_output_dir = ".open-next"  # Same
-[env.preview.vars]
-NEXT_PUBLIC_SITE_URL = "https://preview-dda-portal.pages.dev"  # Ya branch-specific URL
-
-# Optional: Build command override (local wrangler dev ke liye useful, Pages dashboard override karega)
-[build]
-command = "npm run build"  # Agar "npm run build" = "next build"
-watch_dir = "src"  # Changes watch karne ke liye

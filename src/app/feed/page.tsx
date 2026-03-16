@@ -112,7 +112,7 @@ function PostCard({ post }: { post: any }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ postId: post.id || 'temp-id', action: 'like' })
       });
-      const data = await res.json();
+      const data = await res.json() as { liked?: boolean; success?: boolean };
       if (data.liked !== undefined) {
         setIsLiked(data.liked);
         setLikes(prev => data.liked ? prev + 1 : prev - 1);

@@ -14,15 +14,18 @@ export async function POST(req: NextRequest) {
     }
 
     const userId = session.user.id;
-    const data = await req.json() as Record<string, any>;
-    const { 
+    const {
       // Personal
       gender, dob, marital_status, blood_group,
       // Address
       address, permanent_address, district, state, pincode,
       // Professional
-      role_specific_data 
-    } = data;
+      role_specific_data
+    } = await req.json() as {
+      gender?: string; dob?: string; marital_status?: string; blood_group?: string;
+      address?: string; permanent_address?: string; district?: string; state?: string; pincode?: string;
+      role_specific_data?: Record<string, any>;
+    };
 
     const db = getDb((req as any).env?.DB || (process as any).env?.DB);
 

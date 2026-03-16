@@ -10,6 +10,11 @@ export default [
   js.configs.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+      '@next/next': nextPlugin,
+      'react-hooks': reactHooks,
+    },
     rules: {
       ...tsPlugin.configs.recommended.rules,
       ...nextPlugin.configs.recommended.rules,
@@ -17,7 +22,7 @@ export default [
       ...reactHooks.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
-      'no-undef': 'off', // TypeScript handles this better
+      'no-undef': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
     },

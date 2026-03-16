@@ -8,7 +8,7 @@ export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   try {
-    const data = await req.json();
+    const data = await req.json() as Record<string, any>;
     const { role, full_name, email, password, mobile, ...details } = data;
 
     // Securely hash the password

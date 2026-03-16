@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     }
 
     const userId = session.user.id;
-    const data = await req.json();
+    const data = await req.json() as Record<string, any>;
     const { 
       // Personal
       gender, dob, marital_status, blood_group,

@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && npm run cf:build",
-    "cf:build": "opennextjs-cloudflare build",
-    "cf:preview": "opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare deploy",
-    "deploy": "opennextjs-cloudflare deploy",
+    "cf:build": "npx opennextjs-cloudflare build",
+    "cf:preview": "npx opennextjs-cloudflare preview",
+    "cf:deploy": "npx opennextjs-cloudflare deploy",
+    "deploy": "npx opennextjs-cloudflare deploy",
     "start": "next start",
     "lint": "eslint"
   },
